@@ -1,0 +1,14 @@
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.DataAccess.deps.json
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.DataAccess.dll
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.DataAccess.pdb
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.csprojAssemblyReference.cache
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.AssemblyInfoInputs.cache
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.AssemblyInfo.cs
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.csproj.CoreCompileInputs.cache
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.dll
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.pdb
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.Models.dll
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.Utility.dll
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.Models.pdb
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\bin\Debug\netcoreapp3.1\Uplift.Utility.pdb
+C:\Projects\Uplift\Uplift\Uplift.DataAccess\obj\Debug\netcoreapp3.1\Uplift.DataAccess.csproj.CopyComplete
