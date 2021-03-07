@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Uplift.DataAccess.Data;
+using Uplift.DataAccess.Data.Initializer;
 using Uplift.DataAccess.Data.Repository;
 using Uplift.DataAccess.Data.Repository.IRepository;
 
@@ -33,22 +34,28 @@ namespace Uplift
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            // DÁ ERRO (ESPERAR ATÉ FAZER SCAFFOLDING DE REGISTRATION)
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddDefaultUI();
 
-            //CÓDIGO GENÉRICO, SUBSTITUIDO PELO CÓDIGO QUE ESTÁ A DAR ERRO
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>(); 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+        
 
             services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
 
-            // DÁ ERRO (ESPERAR ATÉ FAZER SCAFFOLDING DE REGISTRATION)
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = $"/Identity/Account/Login";
@@ -58,7 +65,7 @@ namespace Uplift
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInit)
         {
             if (env.IsDevelopment())
             {
@@ -73,8 +80,13 @@ namespace Uplift
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
+            app.UseCookiePolicy();
+
 
             app.UseRouting();
+
+            dbInit.Initialize();
 
             app.UseAuthentication();
             app.UseAuthorization();

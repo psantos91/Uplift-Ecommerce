@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Uplift.DataAccess.Data.Repository.IRepository;
 using Uplift.Models;
+using Uplift.Utility;
 
 namespace Uplift.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class CategoryController : Controller
     {
@@ -65,7 +68,9 @@ namespace Uplift.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Category.GetAll() });
+            //return Json(new { data = _unitOfWork.Category.GetAll() });
+
+            return Json(new { data = _unitOfWork.SP_Call.ReturnList<Category>(SD.usp_GetAllCategory, null) });
         }
         
         [HttpDelete]
